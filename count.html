@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color:#f3f3f3;
+    
+    font-family: sans-serif;
+}
+.full{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(45deg,#084e68,#00ffd0);
+    padding: 20px;
+}
+.heading{
+    height: 20vh;
+    font-size: 1.1rem;
+}
+.heading span{
+    opacity: .9;
+}
+.content{
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 3.1rem;
+}
+.content h1{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px;
+    word-spacing: 4px;
+}
+.foot{
+    height: 40vh;
+    padding: 50px 90px;
+    display: flex;
+    justify-content: space-evenly;
+    
+    
+}
+.section{
+    width: 11rem;
+    height: 100%;
+    background-color: #0dc5d852;
+}
+.section .time{
+    width: 100%;
+    height: 70%;
+    text-align: center;
+    border-bottom: 1px solid #f3f3f3;
+    padding: 35px;
+    font-size: 40px;
+    font-weight: bold;
+    
+}
+.section .info{
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    opacity: .9;
+    text-transform: uppercase;
+    height: 30%;
+
+}
+
+
+@media  screen and (max-width:541px){
+    html{
+        font-size: 14px;
+    }
+   
+    .heading{
+        height: 15vh;
+    }
+    .content{
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 0rem;
+    }
+
+}
+@media screen and (max-width:715px){
+    html{
+        font-size: 15px;
+    }
+    .content{
+        padding: 1rem;
+    }
+}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="full">
+        <div class="heading">
+           <p> <span>Ac</span><strong>ROLL</strong></p>
+        </div>
+        <div class="content">
+            <div class="h1">
+                <h1>We are <b>almost</b> there</h1>
+            </div>
+            <div class="p">
+                <p>Stay turned for something amazing!!!</p>
+            </div>
+        </div>
+        <div class="foot">
+            <div class="section">
+                <div id="day" class="time"></div>
+                <div class="info">Days</div>
+            </div>
+            <div class="section">
+                <div id="hour" class="time"></div>
+                <div class="info">Hours</div>
+            </div>
+            <div class="section">
+                <div id="minute" class="time"></div>
+                <div class="info">Min</div>
+            </div>
+            <div class="section">
+                <div id="second" class="time"></div>
+                <div class="info">Sec</div>
+            </div>
+        </div>
+    </div>
+    <script >
+        var day = document.getElementById('day')
+        var hour = document.getElementById('hour')
+        var minute = document.getElementById('minute')
+        var second = document.getElementById('second')
+
+        function count(){
+            var myTime = new Date().getTime();
+            var eventDate = new Date(2020,11,31).getTime();
+            var countDate = eventDate - myTime;
+            var seconds = Math.floor(countDate/1000);
+            var minutes = Math.floor(seconds/60);
+            var hours = Math.floor(minutes/60);
+            var days = Math.floor(hours/24);
+            
+            
+            hours %= 24;
+            minutes %= 60;
+            seconds %= 60;
+
+            if(hours<10){
+                hours = "0"+hours;
+            }
+            if(minutes<10){
+                minutes = "0"+minutes;
+            }
+            if(seconds<10){
+                seconds = "0"+seconds;
+            }
+
+            day.innerHTML = days;
+            hour.innerHTML = hours;
+            minute.innerHTML = minutes;
+            second.innerHTML = seconds;
+
+        }
+        setInterval(count,1000);
+    </script>
+</body>
+</html>
+
+
+
